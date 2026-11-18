@@ -49,7 +49,7 @@ android {
 dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    add("kapt", libs.androidx.room.compiler)
     implementation(libs.androidx.sqlite.framework)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.annotations)
