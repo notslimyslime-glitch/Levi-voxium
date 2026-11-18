@@ -1,5 +1,5 @@
 [versions]
-agp = "8.13.2"
+agp = "9.5.0"
 bcprovJdk15on = "1.70"
 bedrockConnection = "3.0.0.Beta10-SNAPSHOT"
 espressoCore = "3.7.0"
@@ -25,7 +25,7 @@ httpclient = "4.5.14"
 httpclientVersion = "1.9.2"
 junit = "4.13.2"
 junitVersion = "1.3.0"
-kotlin = "2.3.0"
+kotlin = "2.4.21"
 lifecycle = "2.10.0"
 material = "1.13.0"
 minecraftauth = "main-SNAPSHOT"
@@ -79,7 +79,7 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 httpclient = { module = "org.apache.httpcomponents:httpclient", version.ref = "httpclient" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-material = { module = "com.google.android.material:material", version.ref = "material" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 minecraftauth = { module = "com.github.RaphiMC:MinecraftAuth", version.ref = "minecraftauth" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 pkix = { module = "com.madgag.spongycastle:pkix", version.ref = "pkix" }
@@ -97,6 +97,7 @@ commonmark-ext-autolink = { module = "org.commonmark:commonmark-ext-autolink", v
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-gradle" }
