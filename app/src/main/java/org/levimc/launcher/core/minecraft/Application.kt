@@ -15,18 +15,7 @@ class LauncherApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        context = applicationContext
-        FeatureSettings.init(applicationContext)
-        CrashReporter.init(this)
-        val processName = Application.getProcessName()
-        if (processName.endsWith(":crash")) return
-
-        PackageService.init(this)
-        NewsNotificationHelper.initialize(this)
-        LogcatOverlayManager.init(this)
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        DiscordPresence.initialize(this)
+        initialize(this)
     }
 
     companion object {
@@ -37,5 +26,20 @@ class LauncherApplication : Application() {
         @JvmStatic
         lateinit var preferences: SharedPreferences
             private set
+
+        @JvmStatic
+        fun initialize(application: Application) {
+            context = application.applicationContext
+            FeatureSettings.init(context)
+            CrashReporter.init(application)
+            val processName = Application.getProcessName()
+            if (processName.endsWith(":crash")) return
+
+            PackageService.init(application)
+            NewsNotificationHelper.initialize(application)
+            LogcatOverlayManager.init(application)
+            preferences = PreferenceManager.getDefaultSharedPreferences(application)
+            DiscordPresence.initialize(application)
+        }
     }
 }
