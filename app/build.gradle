@@ -70,6 +70,8 @@ android {
         minSdkVersion 28
         targetSdkVersion 35
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "VERSION_NAME", '"Voxium"'
+        buildConfigField "int", "VERSION_CODE", "1"
         buildConfigField "String", "CURSEFORGE_API_KEY", groovy.json.JsonOutput.toJson(curseForgeApiKey)
         buildConfigField 'long', 'DISCORD_APPLICATION_ID', "${discordApplicationId}L"
         buildConfigField 'String', 'DISCORD_LARGE_IMAGE', groovy.json.JsonOutput.toJson(discordLargeImage)
