@@ -1,8 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.google.services)
-    alias(libs.plugins.firebase.crashlytics)
 }
 
 def localProperties = new Properties()
@@ -69,11 +67,8 @@ android {
     namespace 'org.levimc.launcher'
     compileSdkVersion 36
     defaultConfig {
-        applicationId "org.levimc.launcher"
         minSdkVersion 28
         targetSdkVersion 35
-        versionCode getVersionCodeByTimestamp()
-        versionName getGitTag()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "CURSEFORGE_API_KEY", groovy.json.JsonOutput.toJson(curseForgeApiKey)
         buildConfigField 'long', 'DISCORD_APPLICATION_ID', "${discordApplicationId}L"
@@ -101,7 +96,7 @@ android {
     }
     sourceSets {
         main {
-            assets.srcDirs += rootProject.file('resources')
+            assets.srcDirs += rootProject.file('levi-bedrock/resources')
         }
     }
     buildTypes {
@@ -109,10 +104,6 @@ android {
             minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            firebaseCrashlytics {
-                mappingFileUploadEnabled true
-                nativeSymbolUploadEnabled true
-            }
             ndk {
                 debugSymbolLevel 'FULL'
             }
@@ -123,10 +114,6 @@ android {
             minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            firebaseCrashlytics {
-                mappingFileUploadEnabled true
-                nativeSymbolUploadEnabled true
-            }
             ndk {
                 debugSymbolLevel 'FULL'
             }
@@ -142,10 +129,6 @@ android {
             minifyEnabled true
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            firebaseCrashlytics {
-                mappingFileUploadEnabled true
-                nativeSymbolUploadEnabled true
-            }
             resValue "string", "app_name", "LeviLauncher Beta"
             buildConfigField "boolean", "IS_BETA", "true"
             matchingFallbacks = ["release"]
@@ -190,8 +173,8 @@ android {
 
 dependencies {
     implementation files('libs/discord_partner_sdk.aar')
-    implementation project(':minecraft')
-    implementation project(':pojav_controls')
+    implementation project(findProject(':levi-minecraft') != null ? ':levi-minecraft' : ':minecraft')
+    implementation project(findProject(':levi-pojav-controls') != null ? ':levi-pojav-controls' : ':pojav_controls')
     implementation libs.commonmark
     implementation libs.commonmark.ext.gfm.tables
     implementation libs.commonmark.ext.gfm.strikethrough
