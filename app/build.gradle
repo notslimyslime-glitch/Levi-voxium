@@ -166,7 +166,6 @@ android {
 }
 
 dependencies {
-    implementation files('libs/discord_partner_sdk.aar')
     implementation project(findProject(':levi-minecraft') != null ? ':levi-minecraft' : ':minecraft')
     implementation project(findProject(':levi-pojav-controls') != null ? ':levi-pojav-controls' : ':pojav_controls')
     implementation libs.commonmark
